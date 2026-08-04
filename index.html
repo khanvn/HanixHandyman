@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Hanix Handyman Services | BC Builders</title>
-  <link rel="icon" type="image/png" href="Hanix.png" >
+  <link rel="icon" type="image/png" href="image/Hanix.png" >
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -56,6 +56,16 @@
       font-size: 1.6rem;
       font-weight: 800;
       letter-spacing: -0.5px;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      text-decoration: none;
+    }
+
+    .logo-img {
+      height: 40px;
+      width: auto;
+      object-fit: contain;
     }
 
     .logo span {
@@ -269,55 +279,201 @@
       z-index: 10;
     }
 
-    .gallery-grid {
+    /* HOUSE PROJECT GALLERY SECTION */
+    .house-gallery-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap: 1.5rem;
     }
 
-    .gallery-card {
+    .house-card {
       background: #fff;
-      border-radius: 8px;
+      border-radius: 10px;
       overflow: hidden;
       border: 1px solid var(--light-gray);
-    }
-
-    .gallery-card-images {
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+      cursor: pointer;
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
       display: flex;
-      height: 160px;
+      flex-direction: column;
     }
 
-    .gallery-card-img {
-      flex: 1;
+    .house-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 20px rgba(0, 0, 0, 0.12);
+    }
+
+    .house-card-img {
+      height: 200px;
       background-size: cover;
       background-position: center;
       position: relative;
     }
 
-    .gallery-card-img span {
+    .house-badge {
       position: absolute;
-      bottom: 5px;
-      left: 5px;
-      background: rgba(0,0,0,0.7);
+      top: 10px;
+      right: 10px;
+      background: var(--primary);
+      color: var(--dark);
+      font-size: 0.75rem;
+      font-weight: 800;
+      padding: 4px 10px;
+      border-radius: 20px;
+      text-transform: uppercase;
+    }
+
+    .house-card-body {
+      padding: 1.25rem;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+    }
+
+    .house-card-body h4 {
+      font-size: 1.15rem;
+      color: var(--dark);
+      margin-bottom: 0.3rem;
+    }
+
+    .house-card-body .location {
+      font-size: 0.85rem;
+      color: var(--primary-hover);
+      font-weight: 600;
+      margin-bottom: 0.6rem;
+    }
+
+    .house-card-body p {
+      font-size: 0.88rem;
+      color: var(--gray-text);
+      line-height: 1.4;
+      margin-bottom: 1rem;
+    }
+
+    .view-details-btn {
+      margin-top: auto;
+      color: var(--dark);
+      font-weight: 700;
+      font-size: 0.85rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+
+    /* MODAL POPUP LIGHTBOX */
+    .modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(15, 23, 42, 0.85);
+      z-index: 2000;
+      display: none;
+      justify-content: center;
+      align-items: center;
+      padding: 1.5rem;
+      backdrop-filter: blur(4px);
+    }
+
+    .modal-content {
+      background: #fff;
+      max-width: 750px;
+      width: 100%;
+      max-height: 90vh;
+      overflow-y: auto;
+      border-radius: 12px;
+      box-shadow: 0 20px 30px rgba(0,0,0,0.3);
+      position: relative;
+      animation: modalFade 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    @keyframes modalFade {
+      from { opacity: 0; transform: scale(0.95); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      background: var(--dark);
       color: #fff;
-      font-size: 0.7rem;
-      padding: 2px 6px;
-      border-radius: 3px;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 1.2rem;
+      cursor: pointer;
+      z-index: 10;
+      border: none;
     }
 
-    .gallery-card-info {
-      padding: 1rem;
+    .modal-img {
+      width: 100%;
+      height: 320px;
+      object-fit: cover;
     }
 
-    .gallery-card-info h4 {
-      font-size: 1.1rem;
+    .modal-body {
+      padding: 2rem;
+    }
+
+    .modal-body h3 {
+      font-size: 1.6rem;
       color: var(--dark);
       margin-bottom: 0.25rem;
     }
 
-    .gallery-card-info p {
-      font-size: 0.85rem;
+    .modal-body .modal-location {
+      color: var(--primary-hover);
+      font-weight: 700;
+      margin-bottom: 1.2rem;
+      display: block;
+    }
+
+    .modal-specs {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 1rem;
+      background: var(--light);
+      padding: 1rem;
+      border-radius: 8px;
+      margin-bottom: 1.5rem;
+      border: 1px solid var(--light-gray);
+    }
+
+    .spec-item strong {
+      display: block;
+      font-size: 0.75rem;
       color: var(--gray-text);
+      text-transform: uppercase;
+    }
+
+    .spec-item span {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--dark);
+    }
+
+    .modal-body h4 {
+      margin-top: 1rem;
+      margin-bottom: 0.5rem;
+      color: var(--dark);
+    }
+
+    .modal-body p {
+      color: #475569;
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+
+    .modal-body ul {
+      margin-left: 1.2rem;
+      color: #475569;
+      margin-bottom: 1.5rem;
     }
 
     /* Contact Form Section */
@@ -364,6 +520,7 @@
       nav ul { display: none; }
       .contact-container { grid-template-columns: 1fr; }
       .ba-container { height: 300px; }
+      .modal-img { height: 220px; }
     }
   </style>
 </head>
@@ -372,10 +529,14 @@
   <!-- Header / Nav -->
   <header>
     <div class="nav-container">
-      <div class="logo">HANIX <span>HANDYMAN</span></div>
+      <a href="#" class="logo">
+        <img src="image/Hanix.png" alt="Hanix Handyman Logo" class="logo-img">
+        <span>HANIX</span> HANDYMAN
+      </a>
       <nav>
         <ul>
           <li><a href="#services">Services</a></li>
+          <li><a href="#gallery">Featured Homes</a></li>
           <li><a href="#before-after">Before & After</a></li>
           <li><a href="#contact">Free Quote</a></li>
         </ul>
@@ -444,6 +605,185 @@
     </div>
   </section>
 
+  <!-- FEATURED HOUSES GALLERY SECTION (10 HOUSES) -->
+  <section id="gallery" style="background-color: #ffffff;">
+    <div class="section-title">
+      <h2>Recent House Projects</h2>
+      <p>Click on any property to view project photos, specs, and work details.</p>
+    </div>
+
+    <div class="house-gallery-grid">
+      
+      <!-- House 1 -->
+      <div class="house-card" onclick="openModal(0)">
+        <div class="house-card-img" style="background-image: url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=600&q=80');">
+          <span class="house-badge">Full Remodel</span>
+        </div>
+        <div class="house-card-body">
+          <h4>Modern Craftsman Build</h4>
+          <span class="location">Coquitlam, BC</span>
+          <p>Complete interior framing, custom cedar trim, open-concept layout, and new exterior siding.</p>
+          <div class="view-details-btn">View House Details &rarr;</div>
+        </div>
+      </div>
+
+      <!-- House 2 -->
+      <div class="house-card" onclick="openModal(1)">
+        <div class="house-card-img" style="background-image: url('https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=600&q=80');">
+          <span class="house-badge">Exterior & Deck</span>
+        </div>
+        <div class="house-card-body">
+          <h4>Luxury Custom Residence</h4>
+          <span class="location">Burnaby, BC</span>
+          <p>Multi-level composite deck build, glass railing installation, and exterior accent lighting.</p>
+          <div class="view-details-btn">View House Details &rarr;</div>
+        </div>
+      </div>
+
+      <!-- House 3 -->
+      <div class="house-card" onclick="openModal(2)">
+        <div class="house-card-img" style="background-image: url('https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=600&q=80');">
+          <span class="house-badge">Kitchen & Bath</span>
+        </div>
+        <div class="house-card-body">
+          <h4>Coastal Suburban Home</h4>
+          <span class="location">Vancouver, BC</span>
+          <p>Gourmet kitchen overhaul, marble island installation, hardwood flooring, and ensuite tile work.</p>
+          <div class="view-details-btn">View House Details &rarr;</div>
+        </div>
+      </div>
+
+      <!-- House 4 -->
+      <div class="house-card" onclick="openModal(3)">
+        <div class="house-card-img" style="background-image: url('https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=600&q=80');">
+          <span class="house-badge">Basement Suite</span>
+        </div>
+        <div class="house-card-body">
+          <h4>Legal Rental Suite Build</h4>
+          <span class="location">Surrey, BC</span>
+          <p>Converted unfinished basement into a 2-bedroom rental unit with soundproofing and egress windows.</p>
+          <div class="view-details-btn">View House Details &rarr;</div>
+        </div>
+      </div>
+
+      <!-- House 5 -->
+      <div class="house-card" onclick="openModal(4)">
+        <div class="house-card-img" style="background-image: url('https://images.unsplash.com/photo-1600566753376-12c8ab7fb75b?auto=format&fit=crop&w=600&q=80');">
+          <span class="house-badge">Addition</span>
+        </div>
+        <div class="house-card-body">
+          <h4>Contemporary Sunroom & Patio</h4>
+          <span class="location">Port Moody, BC</span>
+          <p>Custom structural addition, skylight framing, sliding glass doors, and stamped concrete patio.</p>
+          <div class="view-details-btn">View House Details &rarr;</div>
+        </div>
+      </div>
+
+      <!-- House 6 -->
+      <div class="house-card" onclick="openModal(5)">
+        <div class="house-card-img" style="background-image: url('https://images.unsplash.com/photo-1600585154526-990dced4db0d?auto=format&fit=crop&w=600&q=80');">
+          <span class="house-badge">Handyman Fixes</span>
+        </div>
+        <div class="house-card-body">
+          <h4>Heritage Exterior Restoration</h4>
+          <span class="location">New Westminster, BC</span>
+          <p>Restored rotting fascias, replaced porch columns, repaired siding, and applied fresh exterior paint.</p>
+          <div class="view-details-btn">View House Details &rarr;</div>
+        </div>
+      </div>
+
+      <!-- House 7 -->
+      <div class="house-card" onclick="openModal(6)">
+        <div class="house-card-img" style="background-image: url('https://images.unsplash.com/photo-1600573472550-8090b5e0745e?auto=format&fit=crop&w=600&q=80');">
+          <span class="house-badge">Flooring & Trim</span>
+        </div>
+        <div class="house-card-body">
+          <h4>Modern Two-Story Residence</h4>
+          <span class="location">Langley, BC</span>
+          <p>Engineered hardwood throughout entire main floor, custom baseboards, and stair tread installation.</p>
+          <div class="view-details-btn">View House Details &rarr;</div>
+        </div>
+      </div>
+
+      <!-- House 8 -->
+      <div class="house-card" onclick="openModal(7)">
+        <div class="house-card-img" style="background-image: url('https://images.unsplash.com/photo-1580587771525-78b9dba3b914?auto=format&fit=crop&w=600&q=80');">
+          <span class="house-badge">Framing & Roof</span>
+        </div>
+        <div class="house-card-body">
+          <h4>Detached Garage & Workshop</h4>
+          <span class="location">Maple Ridge, BC</span>
+          <p>Ground-up 2-car garage construction with workshop space, electrical rough-ins, and insulated drywall.</p>
+          <div class="view-details-btn">View House Details &rarr;</div>
+        </div>
+      </div>
+
+      <!-- House 9 -->
+      <div class="house-card" onclick="openModal(8)">
+        <div class="house-card-img" style="background-image: url('https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=600&q=80');">
+          <span class="house-badge">Bathroom Upgrade</span>
+        </div>
+        <div class="house-card-body">
+          <h4>Luxury Master Bath Retreat</h4>
+          <span class="location">Richmond, BC</span>
+          <p>Curbless walk-in tile shower, freestanding tub installation, double vanity, and heated tile floors.</p>
+          <div class="view-details-btn">View House Details &rarr;</div>
+        </div>
+      </div>
+
+      <!-- House 10 -->
+      <div class="house-card" onclick="openModal(9)">
+        <div class="house-card-img" style="background-image: url('https://images.unsplash.com/photo-1600566752355-35792bedcfea?auto=format&fit=crop&w=600&q=80');">
+          <span class="house-badge">Fence & Gate</span>
+        </div>
+        <div class="house-card-body">
+          <h4>Cedar Privacy Fence & Pergola</h4>
+          <span class="location">Delta, BC</span>
+          <p>Custom 6ft horizontal cedar fence, automated driveway gate structure, and backyard shade pergola.</p>
+          <div class="view-details-btn">View House Details &rarr;</div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- LIGHTBOX MODAL FOR HOUSE DETAILS -->
+  <div class="modal-overlay" id="houseModal" onclick="closeModalOnOuterClick(event)">
+    <div class="modal-content">
+      <button class="modal-close" onclick="closeModal()">&times;</button>
+      <img id="modalImg" src="" alt="House Project" class="modal-img">
+      <div class="modal-body">
+        <h3 id="modalTitle">House Title</h3>
+        <span id="modalLocation" class="modal-location">Location</span>
+
+        <div class="modal-specs">
+          <div class="spec-item">
+            <strong>Project Type</strong>
+            <span id="modalType">-</span>
+          </div>
+          <div class="spec-item">
+            <strong>Duration</strong>
+            <span id="modalDuration">-</span>
+          </div>
+          <div class="spec-item">
+            <strong>Status</strong>
+            <span id="modalStatus">Completed</span>
+          </div>
+        </div>
+
+        <h4>Project Overview & Scope:</h4>
+        <p id="modalDescription">Description details go here...</p>
+
+        <h4 style="margin-top: 1rem;">Key Work Completed:</h4>
+        <ul id="modalTasks">
+          <!-- Tasks injected via JS -->
+        </ul>
+
+        <a href="#contact" class="btn" onclick="closeModal()" style="width: 100%; text-align: center;">Book a Similar Project</a>
+      </div>
+    </div>
+  </div>
+
   <!-- BEFORE & AFTER GALLERY SECTION -->
   <section id="before-after" style="background-color: #f1f5f9; max-width: 100%; padding: 4rem 1.5rem;">
     <div style="max-width: 1200px; margin: 0 auto;">
@@ -462,54 +802,6 @@
         </div>
         <input type="range" min="0" max="100" value="50" class="ba-slider" id="ba-range" oninput="document.getElementById('ba-before-layer').style.width = this.value + '%'">
       </div>
-
-      <!-- Static Grid Gallery -->
-      <div class="gallery-grid">
-        <div class="gallery-card">
-          <div class="gallery-card-images">
-            <div class="gallery-card-img" style="background-image: url('https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=400&q=80'); border-right: 2px solid #fff;">
-              <span>BEFORE</span>
-            </div>
-            <div class="gallery-card-img" style="background-image: url('https://images.unsplash.com/photo-1556911220-e15b29be8c8f?auto=format&fit=crop&w=400&q=80');">
-              <span>AFTER</span>
-            </div>
-          </div>
-          <div class="gallery-card-info">
-            <h4>Full Kitchen Renovation</h4>
-            <p>Demolition, modern cabinetry installation, quartz countertops, and backsplashes.</p>
-          </div>
-        </div>
-
-        <div class="gallery-card">
-          <div class="gallery-card-images">
-            <div class="gallery-card-img" style="background-image: url('https://images.unsplash.com/photo-1507652313519-d4e9174996dd?auto=format&fit=crop&w=400&q=80'); border-right: 2px solid #fff;">
-              <span>BEFORE</span>
-            </div>
-            <div class="gallery-card-img" style="background-image: url('https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=400&q=80');">
-              <span>AFTER</span>
-            </div>
-          </div>
-          <div class="gallery-card-info">
-            <h4>Bathroom Upgrade</h4>
-            <p>Tile replacement, updated vanity, walk-in shower conversion, and new plumbing fixtures.</p>
-          </div>
-        </div>
-
-        <div class="gallery-card">
-          <div class="gallery-card-images">
-            <div class="gallery-card-img" style="background-image: url('https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=400&q=80'); border-right: 2px solid #fff;">
-              <span>BEFORE</span>
-            </div>
-            <div class="gallery-card-img" style="background-image: url('https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=400&q=80');">
-              <span>AFTER</span>
-            </div>
-          </div>
-          <div class="gallery-card-info">
-            <h4>Deck & Handyman Fixes</h4>
-            <p>Restored rotting wood, board replacement, sanding, and weatherproof stain sealing.</p>
-          </div>
-        </div>
-      </div>
     </div>
   </section>
 
@@ -527,7 +819,7 @@
         
         <p style="margin-bottom: 0.5rem;"><strong>Business Name:</strong> Hanix Handyman Ltd.</p>
         <p style="margin-bottom: 0.5rem;"><strong>Phone:</strong> (778) 996-3445</p>
-        <p style="margin-bottom: 0.5rem;"><strong>Email:</strong> Hvalinoghondar@gmail.com</p>
+        <p style="margin-bottom: 0.5rem;"><strong>Email:</strong> Hanixhandyman@gmail.com</p>
         <p style="margin-bottom: 0.5rem;"><strong>Service Area:</strong> BC Lower Mainland / Local Area</p>
       </div>
 
@@ -562,6 +854,134 @@
   <footer>
     <p>&copy; 2026 Hanix Handyman. All rights reserved. Registered & Insured in British Columbia.</p>
   </footer>
+
+  <!-- SCRIPT FOR MODAL LIGHTBOX DATA -->
+  <script>
+    const housesData = [
+      {
+        title: "Modern Craftsman Build",
+        location: "Coquitlam, BC",
+        type: "Full Interior & Exterior Build",
+        duration: "6 Weeks",
+        img: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1000&q=80",
+        description: "A complete home transformation including full interior drywall, structural wall removal to create an open concept, custom cedar architectural accents, and high-efficiency window installs.",
+        tasks: ["Load-bearing beam installation", "Custom interior trim and baseboards", "Hardwood flooring across main level", "Exterior accent siding & paint"]
+      },
+      {
+        title: "Luxury Custom Residence",
+        location: "Burnaby, BC",
+        type: "Deck & Outdoor Living",
+        duration: "3 Weeks",
+        img: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1000&q=80",
+        description: "Built a sprawling multi-level composite outdoor deck designed for BC weather, completed with frameless glass railings and integrated LED stair lighting.",
+        tasks: ["Concrete footings & deck post framing", "Low-maintenance composite board decking", "Custom glass railing assembly", "Exterior electrical hookups"]
+      },
+      {
+        title: "Coastal Suburban Home",
+        location: "Vancouver, BC",
+        type: "Kitchen & Master Suite",
+        duration: "4 Weeks",
+        img: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=1000&q=80",
+        description: "Upgraded a 1990s suburban kitchen into a bright, modern cooking space featuring quartz countertops, custom shaker cabinets, and recessed lighting.",
+        tasks: ["Cabinetry assembly & installation", "Quartz countertop fitting", "Plumbing re-route for kitchen island", "Backsplash tile fitting"]
+      },
+      {
+        title: "Legal Rental Suite Build",
+        location: "Surrey, BC",
+        type: "Basement Conversion",
+        duration: "5 Weeks",
+        img: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1000&q=80",
+        description: "Converted an unfinished basement into a fully code-compliant 2-bedroom rental basement suite to generate passive rental income for the homeowner.",
+        tasks: ["Soundproofing drywall installation", "Egress window cutouts", "Subfloor and vinyl plank installation", "Compact kitchen & full bath plumbing"]
+      },
+      {
+        title: "Contemporary Sunroom & Patio",
+        location: "Port Moody, BC",
+        type: "Home Addition",
+        duration: "4 Weeks",
+        img: "https://images.unsplash.com/photo-1600566753376-12c8ab7fb75b?auto=format&fit=crop&w=1000&q=80",
+        description: "Framed and finished a bright sunroom addition extending off the dining room, providing all-season outdoor views and insulated comfort.",
+        tasks: ["Framing & subfloor extension", "Sliding glass patio door installation", "Skylight framing and sealing", "Exterior siding matching"]
+      },
+      {
+        title: "Heritage Exterior Restoration",
+        location: "New Westminster, BC",
+        type: "Handyman & Wood Repair",
+        duration: "10 Days",
+        img: "https://images.unsplash.com/photo-1600585154526-990dced4db0d?auto=format&fit=crop&w=1000&q=80",
+        description: "Repaired weathered and rotting trim on a character home, replacing damaged timber with pressure-treated wood and freshly painting all exterior fascias.",
+        tasks: ["Removal of damaged/rotted cedar", "Custom profile wood matching", "Weather-resistant sealing & priming", "Full porch rail restoration"]
+      },
+      {
+        title: "Modern Two-Story Residence",
+        location: "Langley, BC",
+        type: "Flooring & Interior Finish",
+        duration: "2 Weeks",
+        img: "https://images.unsplash.com/photo-1600573472550-8090b5e0745e?auto=format&fit=crop&w=1000&q=80",
+        description: "Replaced outdated carpets across the whole house with wide-plank engineered oak flooring, including custom staircase tread installation.",
+        tasks: ["Old carpet removal & subfloor leveling", "Engineered oak floor laying", "Stair tread and riser installation", "Matching baseboards and trim"]
+      },
+      {
+        title: "Detached Garage & Workshop",
+        location: "Maple Ridge, BC",
+        type: "Outbuilding Build",
+        duration: "3 Weeks",
+        img: "https://images.unsplash.com/photo-1580587771525-78b9dba3b914?auto=format&fit=crop&w=1000&q=80",
+        description: "Built a spacious detached garage with high ceilings to accommodate custom workshop equipment, vehicular storage, and heavy-duty shelving.",
+        tasks: ["Wall & roof truss framing", "Asphalt shingle roofing", "Automated overhead door setup", "Insulation & drywall taping"]
+      },
+      {
+        title: "Luxury Master Bath Retreat",
+        location: "Richmond, BC",
+        type: "Bathroom Remodel",
+        duration: "2.5 Weeks",
+        img: "https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=1000&q=80",
+        description: "Converted an outdated master bathroom into a spa-like retreat featuring a curbless glass walk-in shower and freestanding tub.",
+        tasks: ["Waterproofing membranes (Schluter system)", "Large-format porcelain tile laying", "Vanity plumbing and fixture installs", "In-floor heating installation"]
+      },
+      {
+        title: "Cedar Privacy Fence & Pergola",
+        location: "Delta, BC",
+        type: "Fencing & Landscape Structure",
+        duration: "1 Week",
+        img: "https://images.unsplash.com/photo-1600566752355-35792bedcfea?auto=format&fit=crop&w=1000&q=80",
+        description: "Constructed a stylish horizontal cedar fence around the property perimeter along with an attached wooden shade pergola over the patio area.",
+        tasks: ["Post-hole digging & concrete setting", "Horizontal cedar board installation", "Pergola beam assembly", "Stain and sealant application"]
+      }
+    ];
+
+    function openModal(index) {
+      const data = housesData[index];
+      document.getElementById('modalImg').src = data.img;
+      document.getElementById('modalTitle').innerText = data.title;
+      document.getElementById('modalLocation').innerText = data.location;
+      document.getElementById('modalType').innerText = data.type;
+      document.getElementById('modalDuration').innerText = data.duration;
+      document.getElementById('modalDescription').innerText = data.description;
+
+      const tasksList = document.getElementById('modalTasks');
+      tasksList.innerHTML = '';
+      data.tasks.forEach(task => {
+        const li = document.createElement('li');
+        li.innerText = task;
+        tasksList.appendChild(li);
+      });
+
+      document.getElementById('houseModal').style.display = 'flex';
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeModal() {
+      document.getElementById('houseModal').style.display = 'none';
+      document.body.style.overflow = 'auto';
+    }
+
+    function closeModalOnOuterClick(event) {
+      if (event.target.id === 'houseModal') {
+        closeModal();
+      }
+    }
+  </script>
 
 </body>
 </html>
